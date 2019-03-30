@@ -295,14 +295,10 @@ class GiftedChat extends React.Component {
   }
 
   scrollToBottom(animated = true) {
-    const { bottomViewOffset, bottomViewPosition, messages } = this.props
-    const lastMessageIndex = messages.length - 1;
-    this._messageContainerRef.scrollTo({
-      lastMessageIndex,
-      viewOffset: bottomViewOffset,
-      viewPosition: bottomViewPosition,
-      animated
-    })
+    if (this._messageContainerRef === null) {
+      return;
+    }
+    this._messageContainerRef.scrollTo({ y: 0, animated });
   }
 
 
@@ -569,8 +565,6 @@ GiftedChat.defaultProps = {
   maxInputLength: null,
   forceGetKeyboardHeight: false,
   inverted: true,
-  bottomViewOffset: 0,
-  bottomViewPosition: 1,
   extraData: null,
   minComposerHeight: MIN_COMPOSER_HEIGHT,
   maxComposerHeight: MAX_COMPOSER_HEIGHT,
@@ -631,8 +625,6 @@ GiftedChat.propTypes = {
   minComposerHeight: PropTypes.number,
   maxComposerHeight: PropTypes.number,
   alignTop: PropTypes.bool,
-  scrollBottomOffset: PropTypes.number,
-  bottomViewPosition: PropTypes.number,
 };
 
 export {
