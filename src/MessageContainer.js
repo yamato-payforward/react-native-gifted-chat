@@ -81,7 +81,7 @@ export default class MessageContainer extends React.PureComponent {
 
   scrollTo(options) {
     if (this.flatListRef && options) {
-      this.flatListRef.scrollToOffset(options);
+      this.flatListRef.scrollToIndex(options);
     }
   }
 
