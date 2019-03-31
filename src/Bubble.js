@@ -157,6 +157,7 @@ export default class Bubble extends React.Component {
   render() {
     return (
       <View style={[styles[this.props.position].container, this.props.containerStyle[this.props.position]]}>
+        {this.props.position === "right" ? this.renderTime() : null}
         <View
           style={[
             styles[this.props.position].wrapper,
@@ -177,13 +178,14 @@ export default class Bubble extends React.Component {
               {this.renderMessageText()}
               <View style={[styles[this.props.position].bottom, this.props.bottomContainerStyle[this.props.position]]}>
                 {this.renderUsername()}
-                {this.renderTime()}
                 {this.renderTicks()}
               </View>
             </View>
           </TouchableWithoutFeedback>
         </View>
-      </View>
+
+        {this.props.position === "left" ? this.renderTime() : null}
+      </View >
     );
   }
 
@@ -193,14 +195,17 @@ const styles = {
   left: StyleSheet.create({
     container: {
       flex: 1,
-      alignItems: 'flex-start',
+      alignItems: 'flex-end',
+      justifyContent: "flex-start",
+      marginLeft: 5,
+      marginBottom: 5,
+      marginRight: "30%"
     },
     wrapper: {
       borderRadius: 15,
       backgroundColor: Color.leftBubbleBackground,
-      marginRight: 60,
       minHeight: 20,
-      justifyContent: 'flex-end',
+      justifyContent: 'flex-start',
     },
     containerToNext: {
       borderBottomLeftRadius: 3,
@@ -217,19 +222,20 @@ const styles = {
     container: {
       flex: 1,
       alignItems: 'flex-end',
+      justifyContent: "flex-end",
+      marginRight: 5,
+      marginBottom: 5,
+      marginLeft: "30%"
     },
     wrapper: {
       borderRadius: 15,
       backgroundColor: Color.defaultBlue,
-      marginLeft: 60,
       minHeight: 20,
       justifyContent: 'flex-end',
     },
     containerToNext: {
-      borderBottomRightRadius: 3,
     },
     containerToPrevious: {
-      borderTopRightRadius: 3,
     },
     bottom: {
       flexDirection: 'row',
