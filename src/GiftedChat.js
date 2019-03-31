@@ -298,8 +298,8 @@ class GiftedChat extends React.Component {
     if (this._messageContainerRef === null) {
       return;
     }
-    const index = this.props.messages.length -1
-    this._messageContainerRef.scrollTo({ index, viewOffset: -60, animated, viewPosition: 1 })
+    const index = 0
+    this._messageContainerRef.scrollTo({ index, viewOffset: 20, animated, viewPosition: 0 })
   }
 
 
