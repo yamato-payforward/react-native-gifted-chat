@@ -208,10 +208,8 @@ const styles = {
       justifyContent: 'flex-start',
     },
     containerToNext: {
-      borderBottomLeftRadius: 3,
     },
     containerToPrevious: {
-      borderTopLeftRadius: 3,
     },
     bottom: {
       flexDirection: 'row',
